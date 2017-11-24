@@ -38,14 +38,18 @@ $("#start-button").on("click", function(){
 })
 
 
-// $(".answer-button").on("click", function(){
-//     if(===)
-//     else{//run wrong answer function}
-// });
+$(".answer-button").on("click", function(){
+    if($(this)==correct){
+        congrats(correct);
+    }
+    else{
+        wrong();
+    }
+});
 
-function congrats(correct){
+function congrats(correctAnswer){
     $("#question").empty();
-    $("#question").html('<p>Correct! The right answer was '+correct+'.</p>');
+    $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     setTimeout(newQuestion(),5000);
     $("body").css("background", "url(../images/doctor_who_gif.webp");
