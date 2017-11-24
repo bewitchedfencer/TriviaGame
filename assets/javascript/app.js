@@ -18,7 +18,23 @@ var triviaQs={
         [["What was the name of the Doctor's robot dog?", "K-9"], ["Spot", "K-9", "Kellog", "Super Dog"]],
         [["What actor played the first Doctor?", "William Hartnell"], ["William Hartnell", "Tom Baker", "Matt Smith", "John Barrow"]],
         [["What disease prevented William Hartnell from continuing his role as the Doctor?", "Multiple Sclerosis"], ["Syphilis", "Multiple Sclerosis", "Lupus", "cancer"]],
-        [["Which actor played the Doctor weaering an outrageously long scarf?", "Tom Baker"], ["William Hartnell", "Jodie Whittaker", "Tom Baker", "Matt Smith"]],
+        [["Which actor played the Doctor wearing an outrageously long scarf?", "Tom Baker"], ["William Hartnell", "Jodie Whittaker", "Tom Baker", "Matt Smith"]],
 
-]
+],
+win:0,
+lose:0,
+
 }
+
+$("#start-button").on("click", function(){
+    win=0;
+    lose=0;
+    //reset the timer
+})
+
+//use the example of the time converter from stopwatch to help with the display of the timer here
+
+$(".answer-choice").on("click", function(){
+    if(//text of the answer choice button ===the correct answer then run congrats function)
+    else{//run wrong answer function}
+})
