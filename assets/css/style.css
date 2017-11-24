@@ -1,4 +1,42 @@
+/* background images */
 body{
-    background:url(../images/doctor_who_gif.webp);
+    background:url(../images/pd_background.jpg);
     background-size: cover; 
+    
+}
+
+#question{
+    margin:5% 5% 0 5%;
+    background-color:rgba(1,0,120, .7);
+    border-radius:10%;
+    padding:3%;
+}
+
+#holder{
+    margin-top:10%;
+    background-color:rgba(255,255,255,.5);
+    height:500px;
+}
+
+.start-button{
+    margin-top:5%;
+    background-color:rgb(1,0,120);
+    color:white;
+
+}
+
+#answer-box{
+    margin-top: 5%;
+}
+
+.answer-button{
+    margin:5%;
+    background-color:rgb(1,0,120);
+    
+}
+
+.text{
+    font-size:14px;
+    font-family: 'Amaranth', sans-serif;
+    color:white;
 }

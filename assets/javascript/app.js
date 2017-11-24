@@ -27,14 +27,38 @@ lose:0,
 }
 
 $("#start-button").on("click", function(){
+    $("#question").css("font-size", "14px");
+    $("#start-button").detach(".start-div");
+    newQuestion();
+    //shows gif of tardis traveling
+    //function for adding a question and answers
+})
+
+
+// $(".answer-button").on("click", function(){
+//     if(//text of the answer choice button ===the correct answer then run congrats function)
+//     else{//run wrong answer function}
+// });
+
+function start(){
     win=0;
     lose=0;
+    $("#question").append("<div>Help the Doctor save the Universe! Click start to begin.</div>");
+    $("#question").css("font-size", "20px");
     //reset the timer
-})
+}
 
+function newQuestion(){
+    $("#question").empty();
+    $(".answer-button").empty();
+    $("#question").append(triviaQs.Questions[0][0][0]);
+    for (var i=0; i<4; i++){
+        //need to figure out how to add the questions to each element.
+        //just select by ID?
+        document.getElementById(`"#answer${i}"`).innerHTML ="<div>`${triviaQs.Questions[0][1][i]}`</div>";
+    }
+}
 //use the example of the time converter from stopwatch to help with the display of the timer here
 
-$(".answer-choice").on("click", function(){
-    if(//text of the answer choice button ===the correct answer then run congrats function)
-    else{//run wrong answer function}
-})
+
+start();
