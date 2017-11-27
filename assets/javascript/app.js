@@ -1,24 +1,24 @@
 var triviaQs={
-    Questions:[[["Where is the Doctor from?", "Gallifrey"], ["Gallifrey", "Earth", "Mars", "New Earth"]],
-        [["Who was the most recent doctor?", "Peter Capaldi"], ["David Tenant", "Matt Smith", "Peter Capaldi", "William Hartnell"]],
-        [["Who will be the next doctor?", "Jodie Whittaker"], ["David Tenant", "Ian McKellan", "Iris O'Bannon", "Jodie Whittaker"]],
-        [["Who was the Tenth Doctor?", "David Tenant"], ["David Tenant", "Matt Smith", "Christopher Eccleston", "Patrick Stewart"]],
-        [["When did the Doctor meet River Song for the first time?", "Silence in the Library"], ["Rose", "Blink", "Silence in the Library", "Let's Kill Hitler"]],
-        [["Who are River Song's parents?", "Amelia and Rory Pond"], ["Amelia and Rory Pond", "The Doctor and Romana", "The Doctor and Sarah Jane Smith", "We don't know"]],
-        [["What is the band that writes and performs songs about the Doctor?", "Chameleon Circuit"], ["Blink-182", "Chameleon Circuit", "Green Day", "Weird Sisters"]],
-        [["Who is 'the Doctor's Wife'?", "The TARDIS"], ["River Song", "The TARDIS", "Rose Tyler", "Donna Noble"]],
-        [["What does TARDIS stand for?", "Time and Relative Dimensions in Space"], ["Time and Raging Daleks in Space", "Time and Relative Dimensions in Space", "Theories and Returned Deposits in Sofas", "Time and Raunchy Dimensions in Scenes"]],
-        [["What species fights the Time Lords in the Time War?", "The Daleks"], ["The Daleks", "The Cybermen", "Humans", "The Cat Nurses"]],
-        [["Who is the Doctor's nemesis?", "The Master"], ["Romana", "Rose Tyler", "The Master", "Donna Noble"]],
-        [["Who does Rose Tyler bring back from the dead?", "Capt. Jack Harkness"], ["The Doctor", "The Master", "her mother", "Capt. Jack Harkness"]],
-        [["Which comedian was a companion of the Doctor for a season?", "Catherine Tate"], ["Billy Piper", "Robin Williams", "Jimmy Savile", "Catherine Tate"]],
-        [["What spin-off featured John Barrow as leader, Captain Jack Harkness?", "Torchwood"], ["Doctor Companions in Space", "Queen Victoria's Revenge", "Torchwood", "Teachingwood"]],
-        [["who started Torchwood?", "Queen Victoria"], ["The Doctor", "Queen Victoria", "Rose Tyler", "Capt. Jack Harkness"]],
-        [["What kid spin-off show ended with the death of its titular character?", "The Sarah Jane Smith Chronicles"], ["Torchwood", "Doctor Companions in Space", "The Sarah Jane Smith Chronicles", "Doctor Who"]],
-        [["What was the name of the Doctor's robot dog?", "K-9"], ["Spot", "K-9", "Kellog", "Super Dog"]],
-        [["What actor played the first Doctor?", "William Hartnell"], ["William Hartnell", "Tom Baker", "Matt Smith", "John Barrow"]],
-        [["What disease prevented William Hartnell from continuing his role as the Doctor?", "Multiple Sclerosis"], ["Syphilis", "Multiple Sclerosis", "Lupus", "cancer"]],
-        [["Which actor played the Doctor wearing an outrageously long scarf?", "Tom Baker"], ["William Hartnell", "Jodie Whittaker", "Tom Baker", "Matt Smith"]],
+    Questions:[[{Q:"Where is the Doctor from?", A:"Gallifrey"}, [{Title:"Gallifrey", Value:true}, {Title:"Earth", Value:false}, {Title: "Mars", Value:false}, {Title:"New Earth", Value:false}]],
+        [{Q:"Who was the most recent doctor?", A:"Peter Capaldi"}, [{Title:"David Tenant", Value:false}, {Title:"Matt Smith", Value:false}, {Title:"Peter Capaldi", Value:true}, {Title:"William Hartnell", Value:false}]],
+        [{Q:"Who will be the next doctor?", A:"Jodie Whittaker"}, [{Title:"David Tenant", Value:false}, {Title:"Ian McKellan", Value:false}, {Title:"Iris O'Bannon", Value:false}, {Title:"Jodie Whittaker", Value:true}]],
+        [{Q:"Who was the Tenth Doctor?", A:"David Tenant"}, [{Title:"David Tenant", Value:true}, {Title:"Matt Smith", Value:false}, {Title:"Christopher Eccleston", Value:false}, {Title:"Patrick Stewart", Value:false}]],
+        [{Q:"When did the Doctor meet River Song for the first time?", A:"Silence in the Library"}, [{Title:"Rose", Value:false}, {Title:"Blink", Value:false}, {Title:"Silence in the Library", Value:true}, {Title:"Let's Kill Hitler", Value:false}]],
+        [{Q:"Who are River Song's parents?", A:"Amelia and Rory Pond"}, [{Title:"Amelia and Rory Pond", Value:true}, {Title:"The Doctor and Romana", Value:false}, {Title:"The Doctor and Sarah Jane Smith", Value:false}, {Title:"We don't know", Value:false}]],
+        [{Q:"What is the band that writes and performs songs about the Doctor?", A:"Chameleon Circuit"}, [{Title:"Blink-182", Value:false}, {Title:"Chameleon Circuit", Value:true}, {Title:"Green Day", Value:false}, {Title:"Weird Sisters", Value:false}]],
+        [{Q:"Who is 'the Doctor's Wife'?", A:"The TARDIS"}, [{Title:"River Song", Value:false}, {Title:"The TARDIS", Value:true}, {Title:"Rose Tyler", Value:false}, {Title:"Donna Noble", Value:false}]],
+        [{Q:"What does TARDIS stand for?", A:"Time and Relative Dimensions in Space"}, [{Title:"Time and Raging Daleks in Space", Value:false}, {Title:"Time and Relative Dimensions in Space", Value:true}, {Title:"Theories and Returned Deposits in Sofas", Value:false}, {Title:"Time and Raunchy Dimensions in Scenes", Value:false}]],
+        [{Q:"What species fights the Time Lords in the Time War?", A:"The Daleks"}, [{Title:"The Daleks", Value:true}, {Title:"The Cybermen", Value:false}, {Title:"Humans", Value:false}, {Title:"The Cat Nurses", Value:false}]],
+        [{Q:"Who is the Doctor's nemesis?", A:"The Master"}, [{Title:"Romana", Value:false}, {Title:"Rose Tyler", Value:false}, {Title:"The Master", Value:false}, {Title:"Donna Noble", Value:false}]],
+        [{Q:"Who does Rose Tyler bring back from the dead?", A:"Capt. Jack Harkness"}, [{Title:"The Doctor", Value:false}, {Title:"The Master", Value:false}, {Title:"her mother", Value:false}, {Title:"Capt. Jack Harkness", Value:true}]],
+        [{Q:"Which comedian was a companion of the Doctor for a season?", A:"Catherine Tate"}, [{Title:"Billy Piper", Value:false}, {Title:"Robin Williams", Value:false}, {Title:"Jimmy Savile", Value:false}, {Title:"Catherine Tate", Value:true}]],
+        [{Q:"What spin-off featured John Barrow as leader, Captain Jack Harkness?", A:"Torchwood"}, [{Title:"Doctor Companions in Space", Value:false}, {Title:"Queen Victoria's Revenge", Value:false}, {Title:"Torchwood", Value:true}, {Title:"Teachingwood", Value:false}]],
+        [{Q:"who started Torchwood?", A:"Queen Victoria"}, [{Title:"The Doctor", Value:false}, {Title:"Queen Victoria", Value:true}, {Title:"Rose Tyler", Value:false}, {Title:"Capt. Jack Harkness", Value:false}]],
+        [{Q:"What kid spin-off show ended with the death of its titular character?", A:"The Sarah Jane Smith Chronicles"}, [{Title:"Torchwood", Value:false}, {Title:"Doctor Companions in Space", Value:false}, {Title:"The Sarah Jane Smith Chronicles", Value:true}, {Title:"Doctor Who", Value:false}]],
+        [{Q:"What was the name of the Doctor's robot dog?", A:"K-9"}, [{Title:"Spot", Value:false}, {Title:"K-9", Value:true}, {Title:"Kellog", Value:false}, {Title:"Super Dog", Value:false}]],
+        [{Q:"What actor played the first Doctor?", A:"William Hartnell"}, [{Title:"William Hartnell", Value:true}, {Title:"Tom Baker", Value:false}, {Title:"Matt Smith", Value:false}, {Title:"John Barrow", Value:false}]],
+        [{Q:"What disease prevented William Hartnell from continuing his role as the Doctor?", A:"Multiple Sclerosis"}, [{Title:"Syphilis", Value:false}, {Title:"Multiple Sclerosis", Value:true}, {Title:"Lupus", Value:false}, {Title:"cancer", Value:false}]],
+        [{Q:"Which actor played the Doctor wearing an outrageously long scarf?", A:"Tom Baker"}, [{Title:"William Hartnell", Value:false}, {Title:"Jodie Whittaker", Value:false}, {Title:"Tom Baker", Value:true}, {Title:"Matt Smith", Value:false}]],
 
 ]
 
@@ -26,7 +26,8 @@ var triviaQs={
 
 win=0;
 lose=0;
-var correct
+var correct="";
+var wrongness=false;
 
 
 $("#start-button").on("click", function(){
@@ -38,12 +39,22 @@ $("#start-button").on("click", function(){
 })
 
 
-$(".answer-button").on("click", function(){
-    if($(this)==correct){
-        congrats(correct);
+$(".answers").on("click", function(){
+    //store the click
+    //get the value
+    //run for loop to check stored value against the trivia Question Answer
+    console.log(triviaQs.Questions[0][0].A);
+    console.log(correct);
+    for(var x=0; x<4; x++){
+        if(triviaQs.Questions[0][1][x].Value===true){
+            correct=triviaQs.Questions[0][1][x].Title;
+            congrats(correct);
     }
-    else{
-        wrong();
+        else{
+            wrongness=true;
+        }}
+    if(wrongness===true){
+        wrong(correct);
     }
 });
 
@@ -55,9 +66,9 @@ function congrats(correctAnswer){
     $("body").css("background", "url(../images/doctor_who_gif.webp");
 }
 
-function wrong(){
+function wrong(correctAnswer){
     $("#question").empty();
-    $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correct+'.</p>')
+    $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>')
     lose++;
     setTimeout(newQuestion(), 5000);
     $("body").css("background", "url(../images/doctor_who_gif.webp");
@@ -76,16 +87,16 @@ function start(){
 function newQuestion(){
     //emptying out starting screen;
     $("#question").empty();
-    $(".answer-button").empty();
-    $("body").css("background", "url(../images/pd_background1.jpg");
+    $(".answers").empty();
+    $("body").css("background", "url(assets/images/pd1_background.jpg)");
     //adding the new question to the DOM
-    $("#question").append(triviaQs.Questions[0][0][0]);
-    correct = triviaQs.Questions[0][0][1];
-    $("#answer1").html('<button class="btn btn-default answer-button">'+triviaQs.Questions[0][1][0]+'</button>');
-    $("#answer2").html('<button class="btn btn-default answer-button">'+triviaQs.Questions[0][1][1]+'</button>');
-    $("#answer3").html('<button class="btn btn-default answer-button">'+ triviaQs.Questions[0][1][2]+'</button>');
-    $("#answer4").html('<button class="btn btn-default answer-button">'+triviaQs.Questions[0][1][3]+'</button>');
-//tried to do answer appending via new JS backticks
+    $("#question").append(triviaQs.Questions[0][0].Q);
+    $("#answer1").html('<button class="btn btn-default answer-button answers" value="1">'+triviaQs.Questions[0][1][0].Title+'</button>');
+    $("#answer2").html('<button class="btn btn-default answer-button answers" value="2">'+triviaQs.Questions[0][1][1].Title+'</button>');
+    $("#answer3").html('<button class="btn btn-default answer-button answers" value="3">'+triviaQs.Questions[0][1][2].Title+'</button>');
+    $("#answer4").html('<button class="btn btn-default answer-button answers" value="4">'+triviaQs.Questions[0][1][3].Title+'</button>');
+    
+    //tried to do answer appending via new JS backticks
 //     for (var i=0; i<4; i++){
 //         //need to figure out how to add the questions to each element.
 //         //just select by ID?
@@ -94,5 +105,7 @@ function newQuestion(){
 // }
 //use the example of the time converter from stopwatch to help with the display of the timer here
 }
+
+
 
 start();
