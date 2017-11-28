@@ -5,7 +5,7 @@ var triviaQs={
         [{Q:"Who was the Tenth Doctor?", A:"David Tenant"}, [{Title:"David Tenant", Value:true}, {Title:"Matt Smith", Value:false}, {Title:"Christopher Eccleston", Value:false}, {Title:"Patrick Stewart", Value:false}]],
         [{Q:"When did the Doctor meet River Song for the first time?", A:"Silence in the Library"}, [{Title:"Rose", Value:false}, {Title:"Blink", Value:false}, {Title:"Silence in the Library", Value:true}, {Title:"Let's Kill Hitler", Value:false}]],
         [{Q:"Who are River Song's parents?", A:"Amelia and Rory Pond"}, [{Title:"Amelia and Rory Pond", Value:true}, {Title:"The Doctor and Romana", Value:false}, {Title:"The Doctor and Sarah Jane Smith", Value:false}, {Title:"We don't know", Value:false}]],
-        [{Q:"What is the band that writes and performs songs about the Doctor?", A:"Chameleon Circuit"}, [{Title:"Blink-182", Value:false}, {Title:"Chameleon Circuit", Value:true}, {Title:"Green Day", Value:false}, {Title:"Weird Sisters", Value:false}]],
+        [{Q:"What is the band that writes and performs songs about Doctor Who?", A:"Chameleon Circuit"}, [{Title:"Blink-182", Value:false}, {Title:"Chameleon Circuit", Value:true}, {Title:"Green Day", Value:false}, {Title:"Weird Sisters", Value:false}]],
         [{Q:"Who is 'the Doctor's Wife'?", A:"The TARDIS"}, [{Title:"River Song", Value:false}, {Title:"The TARDIS", Value:true}, {Title:"Rose Tyler", Value:false}, {Title:"Donna Noble", Value:false}]],
         [{Q:"What does TARDIS stand for?", A:"Time and Relative Dimensions in Space"}, [{Title:"Time and Raging Daleks in Space", Value:false}, {Title:"Time and Relative Dimensions in Space", Value:true}, {Title:"Theories and Returned Deposits in Sofas", Value:false}, {Title:"Time and Raunchy Dimensions in Scenes", Value:false}]],
         [{Q:"What species fights the Time Lords in the Time War?", A:"The Daleks"}, [{Title:"The Daleks", Value:true}, {Title:"The Cybermen", Value:false}, {Title:"Humans", Value:false}, {Title:"The Cat Nurses", Value:false}]],
@@ -26,8 +26,10 @@ var triviaQs={
 
 win=0;
 lose=0;
-var correct=false;
+var choiceValue=false;
 var wrongness=false;
+var correctWord="";
+var currentQuestion;
 
 
 $("#start-button").on("click", function(){
@@ -39,15 +41,17 @@ $("#start-button").on("click", function(){
 })
 
 
-$(".answer-button").on("click", ".answers", function(){
+$("#answer-box").on("click", ".answer-button", function(){
     //store the click word
     console.log("working");
-    correct = triviaQs.Questions[0][1][0].Value;
-    var correctWord=triviaQs.Questions[0][1][0].Title;    
+    choiceValue = $(this).attr("Value");
+    var choice=$(this).attr("Title"); 
+    correctWord = triviaQs.Questions[0][0].A;
+    console.log(choiceValue);
+    console.log(correctWord); 
     //get the value
     //run for loop to check stored value against the trivia Question Answer
-    console.log(correctWord);
-        if(correctWord===true){
+        if(choiceValue===true){
             congrats(correctWord);
     }
         else{
@@ -60,18 +64,21 @@ $(".answer-button").on("click", ".answers", function(){
 
 function congrats(correctAnswer){
     $("#question").empty();
+    $(".answers").empty();
     $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
+    console.log("win counter", win);
     setTimeout(newQuestion(),5000);
-    $("body").css("background", "url(../images/doctor_who_gif.webp");
+    $("body").css("background", "url(assets/images/doctor_who_gif.webp");
 }
 
 function wrong(correctAnswer){
     $("#question").empty();
-    $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>')
+    $(".answers").empty();
+    $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>');
     lose++;
     setTimeout(newQuestion(), 5000);
-    $("body").css("background", "url(../images/doctor_who_gif.webp");
+    $("body").css("background", "url(assets/images/doctor_who_gif.webp");
 }
 
 function start(){
@@ -90,11 +97,12 @@ function newQuestion(){
     $(".answers").empty();
     $("body").css("background", "url(assets/images/pd1_background.jpg)");
     //adding the new question to the DOM
-    $("#question").append(triviaQs.Questions[0][0].Q);
-    $("#answer1").html('<button class="btn btn-default answer-button answers" value="1">'+triviaQs.Questions[0][1][0].Title+'</button>');
-    $("#answer2").html('<button class="btn btn-default answer-button answers" value="2">'+triviaQs.Questions[0][1][1].Title+'</button>');
-    $("#answer3").html('<button class="btn btn-default answer-button answers" value="3">'+triviaQs.Questions[0][1][2].Title+'</button>');
-    $("#answer4").html('<button class="btn btn-default answer-button answers" value="4">'+triviaQs.Questions[0][1][3].Title+'</button>');
+    currentQuestion=triviaQs.Questions[0][1];
+    $("#question").html(triviaQs.Questions[0][0].Q);
+    $("#answer1").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[0].Value+'>'+currentQuestion[0].Title+'</button>');
+    $("#answer2").html('<button class="btn btn-default answer-button answers" value=' +currentQuestion[1].Value+ '>'+currentQuestion[1].Title+'</button>');
+    $("#answer3").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[2].Value+'>'+currentQuestion[2].Title+'</button>');
+    $("#answer4").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[3].Value+'>'+currentQuestion[3].Title+'</button>');
     
     //tried to do answer appending via new JS backticks
 //     for (var i=0; i<4; i++){
