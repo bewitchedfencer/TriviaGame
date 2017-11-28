@@ -53,22 +53,25 @@ $("#answer-box").on("click", ".answer-button", function(){
     //run for loop to check stored value against the trivia Question Answer
         if(choiceValue===true){
             congrats(correctWord);
+            console.log(correctWord);
     }
-        else{
+        else if (choiceValue===false){
             wrongness=true;
+            console.log("wrongness", wrongness);
         }
     if(wrongness===true){
         wrong(correctWord);
+        console.log("wrong", correctWord);
     }
 });
 
 function congrats(correctAnswer){
     $("#question").empty();
-    $(".answers").empty();
-    $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
+    $("#answer-box").empty();
+    $(".help").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     console.log("win counter", win);
-    setTimeout(newQuestion(),5000);
+    setTimeout(newQuestion, 5000);
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
 }
 
@@ -86,7 +89,7 @@ function start(){
     win=0;
     lose=0;
     //starting screen
-    $("#question").append("<div>Help the Doctor save the Universe! Click start to begin.</div>");
+    $("#question").html("<div>Help the Doctor save the Universe! Click start to begin.</div>");
     $("#question").css("font-size", "20px");
     //reset the timer
 }
