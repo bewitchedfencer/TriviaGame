@@ -1,3 +1,4 @@
+//Object with question arrays
 var triviaQs={
     Questions:[[{Q:"Where is the Doctor from?", A:"Gallifrey"}, [{Title:"Gallifrey", Value:true}, {Title:"Earth", Value:false}, {Title: "Mars", Value:false}, {Title:"New Earth", Value:false}]],
         [{Q:"Who was the most recent doctor?", A:"Peter Capaldi"}, [{Title:"David Tenant", Value:false}, {Title:"Matt Smith", Value:false}, {Title:"Peter Capaldi", Value:true}, {Title:"William Hartnell", Value:false}]],
@@ -23,80 +24,111 @@ var triviaQs={
 ]
 
 }
-
+//win and lose counters
 win=0;
 lose=0;
+//the boolean variable for choice value. Ended up being a stirng
 var choiceValue=false;
+//boolean for determining whether or not to run wrong function
 var wrongness=false;
+//the correct answer
 var correctWord="";
+//variable solely for less typing in newQuestion function
 var currentQuestion;
+//counter for running through the array of questions
 var j=0;
+//the timer
 var timeLeft=11;
+//var that will check to see if all of the questions have been answered
 var t=1;
 
+//when the start button is clicked
 $("#start-button").on("click", function(){
+    //the start button goes away
     $("#start-button").detach(".start-div");
      //function for adding a question and answers
     newQuestion();
 })
 
+//when the div that held the starter button hears the id startover-button and it is clicked
 $(".start-div").on("click", "#startover-button", function(){
+    //startover-button goes away
     $("#startover-button").detach();
+    //the section that holds the timer goes away
     $("#timer").empty();
+    //all the variables are reset
     win=0;
     lose=0;
     j=0;
     t=1;
-    console.log("success");
+    //used for debugging
+    console.log("success");  
+    //all the answer buttons reappear (hidden in end screen)  
+    $(".answers").show();
     //function for adding question and answers
-    // newQuestion();
+    newQuestion();
 })
 
-
+//when the answer button is clicked (answer box is listening for answer button? Not sure how this works)
 $("#answer-box").on("click", ".answer-button", function(){
-    //store the click word
     console.log("working");
+    //the value set up in the newQuestion function is attached to this variable
     choiceValue = $(this).attr("Value");
+    //the choice the user picked
     var choice=$(this).attr("Title"); 
+    //timer is stopped
     clearInterval(timer);
     console.log(choiceValue);
     console.log(correctWord); 
-    //get the value
-    //run for loop to check stored value against the trivia Question Answer
+    //conditional checking the value of the button (if true)
         if(choiceValue==="true"){
+            //run congrats function
             congrats(correctWord);
             console.log(correctWord);
     }
+        //otherwise change the wrongness boolean to true
         else if (choiceValue==="false"){
             wrongness=true;
             console.log("wrongness", wrongness);
         }
+        //if the wrongness boolean is true then 
     if(wrongness===true){
+        //wrong function is called
         wrong(correctWord);
         console.log("wrong", correctWord);
+        //wrong boolean reset
         wrongness=false;
     }
 });
+//timer function
 function timerStarting(){
+    //as long as timeLeft variable is greater than 0
     if(timeLeft>0){
+        //timeLeft decreases by 1
         timeLeft--;
+        //displayed in the timer div
     $("#timer").html(timeLeft);
     }
+    //if timeLeft is 0 then the timer stops and wrong function is called
     if(timeLeft===0){
         clearInterval(timer);
         wrong(correctWord);
     }      
 };
 
+//function declaration for getting the right answer
 function congrats(correctAnswer){
     $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     console.log("win counter", win);
+    //displays what is on the screen for 2 seconds before running the newQuestion function
     setTimeout(newQuestion, 2000);
+    //tardis traveling through space
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
-    j++
+    j++;
 }
 
+//function delcaration for getting wrong answer or running out of time
 function wrong(correctAnswer){
     $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>');
     lose++;
@@ -106,18 +138,16 @@ function wrong(correctAnswer){
     j++
 }
 
+//this starts the game
 function start(){
-    //win and loss tallies
-    win=0;
-    lose=0;
     //starting screen
     $("#question").html("<div>Help the Doctor save the Universe! Click start to begin.</div>");
     $("#question").css("font-size", "20px");
-    //reset the timer
 }
 
+//function declaration for newQuestion()
 function newQuestion(){
-    //emptying out starting screen;
+    //counter for the questions
     t++;
     console.log("t variable", t);
     if(t<triviaQs.Questions.length){
@@ -130,12 +160,15 @@ function newQuestion(){
     $("#answer2").html('<button class="btn btn-default answer-button answers" value=' +currentQuestion[1].Value+ '>'+currentQuestion[1].Title+'</button>');
     $("#answer3").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[2].Value+'>'+currentQuestion[2].Title+'</button>');
     $("#answer4").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[3].Value+'>'+currentQuestion[3].Title+'</button>');
-    correctWord = triviaQs.Questions[j][0].A;    
+    correctWord = triviaQs.Questions[j][0].A;  
+    //this makes the timer work.  
     timer=setInterval(timerStarting, 1000);
     }
     else{
+        // all the questions are done
         $("#question").html("Game Over!");
-        $("#answer-box").empty();
+        $(".answers").hide();
+        //displays the number correct and wrong
         $("#timer").html("<div>You have "+win+" questions correct and "+lose+" questions wrong.</div>");
         $(".start-div").html('<button class="btn btn-default" id="startover-button">Play again?</button>');
     }
