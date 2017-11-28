@@ -31,14 +31,25 @@ var wrongness=false;
 var correctWord="";
 var currentQuestion;
 var j=0;
-
+var timeLeft=11;
+var t=1;
 
 $("#start-button").on("click", function(){
-    $("#question").css("font-size", "14px");
     $("#start-button").detach(".start-div");
+     //function for adding a question and answers
     newQuestion();
-    //shows gif of tardis traveling
-    //function for adding a question and answers
+})
+
+$(".start-div").on("click", "#startover-button", function(){
+    $("#startover-button").detach();
+    $("#timer").empty();
+    win=0;
+    lose=0;
+    j=0;
+    t=1;
+    console.log("success");
+    //function for adding question and answers
+    // newQuestion();
 })
 
 
@@ -47,7 +58,7 @@ $("#answer-box").on("click", ".answer-button", function(){
     console.log("working");
     choiceValue = $(this).attr("Value");
     var choice=$(this).attr("Title"); 
-    correctWord = triviaQs.Questions[j][0].A;
+    clearInterval(timer);
     console.log(choiceValue);
     console.log(correctWord); 
     //get the value
@@ -63,15 +74,25 @@ $("#answer-box").on("click", ".answer-button", function(){
     if(wrongness===true){
         wrong(correctWord);
         console.log("wrong", correctWord);
+        wrongness=false;
     }
 });
+function timerStarting(){
+    if(timeLeft>0){
+        timeLeft--;
+    $("#timer").html(timeLeft);
+    }
+    if(timeLeft===0){
+        clearInterval(timer);
+        wrong(correctWord);
+    }      
+};
 
 function congrats(correctAnswer){
-    $("#question").empty();
     $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     console.log("win counter", win);
-    setTimeout(newQuestion, 3000);
+    setTimeout(newQuestion, 2000);
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
     j++
 }
@@ -79,7 +100,8 @@ function congrats(correctAnswer){
 function wrong(correctAnswer){
     $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>');
     lose++;
-    setTimeout(newQuestion, 3000);
+    console.log("lose counter", lose);    
+    setTimeout(newQuestion, 2000);
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
     j++
 }
@@ -96,8 +118,10 @@ function start(){
 
 function newQuestion(){
     //emptying out starting screen;
-    $("#question").empty();
-    $(".answers").empty();
+    t++;
+    console.log("t variable", t);
+    if(t<triviaQs.Questions.length){
+    timeLeft=11;
     $("body").css("background", "url(assets/images/pd1_background.jpg)");
     //adding the new question to the DOM
     currentQuestion=triviaQs.Questions[j][1];
@@ -106,6 +130,16 @@ function newQuestion(){
     $("#answer2").html('<button class="btn btn-default answer-button answers" value=' +currentQuestion[1].Value+ '>'+currentQuestion[1].Title+'</button>');
     $("#answer3").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[2].Value+'>'+currentQuestion[2].Title+'</button>');
     $("#answer4").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[3].Value+'>'+currentQuestion[3].Title+'</button>');
+    correctWord = triviaQs.Questions[j][0].A;    
+    timer=setInterval(timerStarting, 1000);
+    }
+    else{
+        $("#question").html("Game Over!");
+        $("#answer-box").empty();
+        $("#timer").html("<div>You have "+win+" questions correct and "+lose+" questions wrong.</div>");
+        $(".start-div").html('<button class="btn btn-default" id="startover-button">Play again?</button>');
+    }
+    
     
     //tried to do answer appending via new JS backticks
 //     for (var i=0; i<4; i++){

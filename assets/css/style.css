@@ -38,7 +38,16 @@ body{
 }
 
 .text{
-    font-size:16px;
+    font-size:20px;
     font-family: 'Amaranth', sans-serif;
     color:white;
+}
+
+#timer{
+    font-size:24px;
+    color:black;
+}
+
+#startover-button{
+    margin-top: 5%;
 }
