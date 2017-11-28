@@ -68,7 +68,7 @@ $("#answer-box").on("click", ".answer-button", function(){
 function congrats(correctAnswer){
     $("#question").empty();
     $("#answer-box").empty();
-    $(".help").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
+    $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     console.log("win counter", win);
     setTimeout(newQuestion, 5000);
