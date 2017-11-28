@@ -26,7 +26,7 @@ var triviaQs={
 
 win=0;
 lose=0;
-var correct="";
+var correct=false;
 var wrongness=false;
 
 
@@ -39,22 +39,22 @@ $("#start-button").on("click", function(){
 })
 
 
-$(".answers").on("click", function(){
-    //store the click
+$(".answer-button").on("click", ".answers", function(){
+    //store the click word
+    console.log("working");
+    correct = triviaQs.Questions[0][1][0].Value;
+    var correctWord=triviaQs.Questions[0][1][0].Title;    
     //get the value
     //run for loop to check stored value against the trivia Question Answer
-    console.log(triviaQs.Questions[0][0].A);
-    console.log(correct);
-    for(var x=0; x<4; x++){
-        if(triviaQs.Questions[0][1][x].Value===true){
-            correct=triviaQs.Questions[0][1][x].Title;
-            congrats(correct);
+    console.log(correctWord);
+        if(correctWord===true){
+            congrats(correctWord);
     }
         else{
             wrongness=true;
-        }}
+        }
     if(wrongness===true){
-        wrong(correct);
+        wrong(correctWord);
     }
 });
 
