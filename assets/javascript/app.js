@@ -30,6 +30,7 @@ var choiceValue=false;
 var wrongness=false;
 var correctWord="";
 var currentQuestion;
+var j=0;
 
 
 $("#start-button").on("click", function(){
@@ -46,16 +47,16 @@ $("#answer-box").on("click", ".answer-button", function(){
     console.log("working");
     choiceValue = $(this).attr("Value");
     var choice=$(this).attr("Title"); 
-    correctWord = triviaQs.Questions[0][0].A;
+    correctWord = triviaQs.Questions[j][0].A;
     console.log(choiceValue);
     console.log(correctWord); 
     //get the value
     //run for loop to check stored value against the trivia Question Answer
-        if(choiceValue===true){
+        if(choiceValue==="true"){
             congrats(correctWord);
             console.log(correctWord);
     }
-        else if (choiceValue===false){
+        else if (choiceValue==="false"){
             wrongness=true;
             console.log("wrongness", wrongness);
         }
@@ -67,21 +68,20 @@ $("#answer-box").on("click", ".answer-button", function(){
 
 function congrats(correctAnswer){
     $("#question").empty();
-    $("#answer-box").empty();
     $("#question").html('<p>Correct! The right answer was '+correctAnswer+'.</p>');
     win++;
     console.log("win counter", win);
-    setTimeout(newQuestion, 5000);
+    setTimeout(newQuestion, 3000);
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
+    j++
 }
 
 function wrong(correctAnswer){
-    $("#question").empty();
-    $(".answers").empty();
     $("#question").html('<p>Oh no! The Daleks win again! The correct answer was '+correctAnswer+'.</p>');
     lose++;
-    setTimeout(newQuestion(), 5000);
+    setTimeout(newQuestion, 3000);
     $("body").css("background", "url(assets/images/doctor_who_gif.webp");
+    j++
 }
 
 function start(){
@@ -100,8 +100,8 @@ function newQuestion(){
     $(".answers").empty();
     $("body").css("background", "url(assets/images/pd1_background.jpg)");
     //adding the new question to the DOM
-    currentQuestion=triviaQs.Questions[0][1];
-    $("#question").html(triviaQs.Questions[0][0].Q);
+    currentQuestion=triviaQs.Questions[j][1];
+    $("#question").html(triviaQs.Questions[j][0].Q);
     $("#answer1").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[0].Value+'>'+currentQuestion[0].Title+'</button>');
     $("#answer2").html('<button class="btn btn-default answer-button answers" value=' +currentQuestion[1].Value+ '>'+currentQuestion[1].Title+'</button>');
     $("#answer3").html('<button class="btn btn-default answer-button answers" value='+currentQuestion[2].Value+'>'+currentQuestion[2].Title+'</button>');
